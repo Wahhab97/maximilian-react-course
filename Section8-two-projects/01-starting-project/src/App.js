@@ -1,5 +1,6 @@
 import Form from "./components/form/Form";
 import Header from "./components/haeder/Header";
+import Table from "./components/table/Table";
 
 function App() {
   const calculateHandler = (userInput) => {
@@ -34,30 +35,9 @@ function App() {
       <Header />
 
       <Form />
-
+      <Table />
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
-
-      <table className="result">
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Total Savings</th>
-            <th>Interest (Year)</th>
-            <th>Total Interest</th>
-            <th>Invested Capital</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>YEAR NUMBER</td>
-            <td>TOTAL SAVINGS END OF YEAR</td>
-            <td>INTEREST GAINED IN YEAR</td>
-            <td>TOTAL INTEREST GAINED</td>
-            <td>TOTAL INVESTED CAPITAL</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   );
 }
