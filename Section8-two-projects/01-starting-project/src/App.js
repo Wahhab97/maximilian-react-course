@@ -4,6 +4,7 @@ import Header from "./components/haeder/Header";
 import Table from "./components/table/Table";
 
 function App() {
+  const [yearlyData, setYearlyData] = useState(null);
   const calculateHandler = (userInput) => {
     // Should be triggered when form is submitted
     // You might not directly want to bind it to the submit event on the form though...
@@ -29,14 +30,15 @@ function App() {
     }
 
     // do something with yearlyData ...
+    setYearlyData(yearlyData);
   };
 
   return (
     <div>
       <Header />
 
-      <Form onSubmit={calculateHandler} />
-      <Table />
+      <Form onSubmit={calculateHandler} onReset={setYearlyData} />
+      <Table yearlyData={yearlyData} />
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
     </div>

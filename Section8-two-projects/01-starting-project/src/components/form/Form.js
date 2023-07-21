@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Form.module.css";
 import FormControl from "./FormControl";
 
-const Form = ({ onSubmit }) => {
+const Form = ({ onSubmit, onReset }) => {
   const [currentSavings, setCurrentSavings] = useState("");
   const [yearlyContribution, setYearlyContribution] = useState("");
   const [expectedReturn, setExpectedReturn] = useState("");
@@ -23,6 +23,8 @@ const Form = ({ onSubmit }) => {
     setDuration("");
     setExpectedReturn("");
     setYearlyContribution("");
+
+    onReset(null);
   };
 
   return (

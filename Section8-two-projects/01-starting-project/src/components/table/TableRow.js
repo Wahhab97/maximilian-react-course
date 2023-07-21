@@ -1,13 +1,19 @@
 import React from "react";
 
-const TableRow = () => {
+const TableRow = ({
+  year,
+  savingsEndOfYear,
+  interest,
+  totalInterest,
+  invested,
+}) => {
   return (
     <tr>
-      <td>YEAR NUMBER</td>
-      <td>TOTAL SAVINGS END OF YEAR</td>
-      <td>INTEREST GAINED IN YEAR</td>
-      <td>TOTAL INTEREST GAINED</td>
-      <td>TOTAL INVESTED CAPITAL</td>
+      <td>{year}</td>
+      <td>{savingsEndOfYear}</td>
+      <td>{interest}</td>
+      <td>{totalInterest}</td>
+      <td>{invested}</td>
     </tr>
   );
 };
