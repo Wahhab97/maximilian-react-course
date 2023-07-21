@@ -1,33 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Form.module.css";
+import FormControl from "./FormControl";
 
-const Form = () => {
+const Form = ({ onSubmit }) => {
+  const [currentSavings, setCurrentSavings] = useState("");
+  const [yearlyContribution, setYearlyContribution] = useState("");
+  const [expectedReturn, setExpectedReturn] = useState("");
+  const [duration, setDuration] = useState("");
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    onSubmit({
+      "current-savings": currentSavings,
+      "yearly-contribution": yearlyContribution,
+      "expected-return": expectedReturn,
+      duration: duration,
+    });
+  };
+
+  const resetHandler = () => {
+    setCurrentSavings("");
+    setDuration("");
+    setExpectedReturn("");
+    setYearlyContribution("");
+  };
+
   return (
-    <form className={styles["form"]}>
+    <form className={styles["form"]} onSubmit={submitHandler}>
       <div className={styles["input-group"]}>
-        <p>
-          <label htmlFor="current-savings">Current Savings ($)</label>
-          <input type="number" id="current-savings" />
-        </p>
-        <p>
-          <label htmlFor="yearly-contribution">Yearly Savings ($)</label>
-          <input type="number" id="yearly-contribution" />
-        </p>
+        <FormControl
+          text={"Current Savings ($)"}
+          id={"current-savings"}
+          type={"number"}
+          value={currentSavings}
+          setState={setCurrentSavings}
+        />
+        <FormControl
+          text={"Yearly Savings ($)"}
+          id={"yearly-contribution"}
+          type={"number"}
+          value={yearlyContribution}
+          setState={setYearlyContribution}
+        />
       </div>
       <div className={styles["input-group"]}>
-        <p>
-          <label htmlFor="expected-return">
-            Expected Interest (%, per year)
-          </label>
-          <input type="number" id="expected-return" />
-        </p>
-        <p>
-          <label htmlFor="duration">Investment Duration (years)</label>
-          <input type="number" id="duration" />
-        </p>
+        <FormControl
+          text={"Expected Interest (%, per year)"}
+          id={"expected-return"}
+          type={"number"}
+          value={expectedReturn}
+          setState={setExpectedReturn}
+        />
+        <FormControl
+          text={"Investment Duration (years)"}
+          id={"duration"}
+          type={"number"}
+          value={duration}
+          setState={setDuration}
+        />
       </div>
       <p className={styles["actions"]}>
-        <button type="reset" className={styles["buttonAlt"]}>
+        <button
+          type="reset"
+          className={styles["buttonAlt"]}
+          onClick={resetHandler}
+        >
           Reset
         </button>
         <button type="submit" className={styles["button"]}>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Form from "./components/form/Form";
 import Header from "./components/haeder/Header";
 import Table from "./components/table/Table";
@@ -34,7 +35,7 @@ function App() {
     <div>
       <Header />
 
-      <Form />
+      <Form onSubmit={calculateHandler} />
       <Table />
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
